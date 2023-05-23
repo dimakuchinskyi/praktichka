@@ -1,13 +1,13 @@
-#2
+#3
+import random
 import logging
-def write_file(fill_path, data):
+def rand_file(file_path, num):
     try:
-        with open(fill_path, 'w') as file:
-            file.write(data)
-        logging.info(f'Запис у файл {fill_path} пройшов успішно.')
+        with open(file_path, 'w') as file:
+            for i in range(num):
+                data = random.randint(1, 100)
+                file.write(str(data) + '\n')
+                logging.info(f'Згенероване число: {data}')
     except Exception as e:
-        logging.error(f'В цьому файлі {fill_path} трапилась помилка: {e}')
-
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-write_file('output.txt', input('Введіть що треба вписати в файл: '))
+        logging.error(str(e))
+rand_file('input_randm.txt', int(input('Кількість згенерованих чисел:')))
